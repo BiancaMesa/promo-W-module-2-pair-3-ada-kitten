@@ -1,5 +1,6 @@
 'use strict'; 
 
+//Crear la variable catList que es la clase list que sería el contenedor padre
 const catList = document.querySelector('.js-list');
 
 //Constante 1 creada en JS directamente
@@ -54,4 +55,11 @@ const kittenThree = `<li class="card">
 </p>
 </li>`; 
 console.log(kittenThree);
+
+//Crear items dentro de la variable catList
+catList.innerHTML = kittenOne + kittenTwo + kittenThree;
+
+
+
+
 
