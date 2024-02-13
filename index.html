@@ -52,15 +52,26 @@
 
     <section class="search">
       <h2 class="title">Filtrar / Buscar</h2>
+
       <form class="form">
-        <input class="input" type="text" placeholder="Descripción" />
+        <!-- Description -->
+        <input 
+          class="js_in_search_desc" 
+          type="text" 
+          placeholder="Descripción" 
+          value="elegante"
+        />
+
+        <!-- Breed -->
         <input class="input" type="select" name="raza" placeholder="Raza" id="raza" />
 
         <button class="button">Buscar</button>
       </form>
+
     </section>
 
     <section class="data">
+      <p class="js-message"></p>
       <ul class="js-list">
         <!-- <li class="card">
             <article>
