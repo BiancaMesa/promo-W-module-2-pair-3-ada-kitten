@@ -1,10 +1,15 @@
 'use strict';
 
+
+
 //Crear la variable catList que es la clase list que sería el contenedor padre
 const catList = document.querySelector('.js-list');
 const inputSearchDesc = document.querySelector('.js_in_search_desc');
 const descrSearchText = inputSearchDesc.value;
 const messageFound = document.querySelector('.js-message');
+
+
+
 
 const kittenImage_1 = "https://dev.adalab.es/gato-siames.webp";
 const kittenName_1 = "Anastacio";
@@ -28,11 +33,15 @@ const kittenBreed_3 = "Maine Coon";
 
 
 
-let html = ''; 
+
+
+
+
+let html = '';
 
 //html lo estamos convirtiendo en KittenBreed_1
 if (kittenBreed_1 === "") {
-  html = 'Uy que despiste, no sabemos su raza'; 
+  html = 'Uy que despiste, no sabemos su raza';
 } else {
   html = kittenBreed_1;
 }
@@ -41,8 +50,8 @@ if (kittenBreed_1 === "") {
 
 //Constante 1 creada en JS directamente
 
-const kittenOne = `<li class="card">
-<article>
+const kittenOne = `<li class="card" >
+<article class="js-kit1">
   <img
     class="card_img"
     src= ${kittenImage_1}
@@ -57,8 +66,8 @@ const kittenOne = `<li class="card">
 
 
 
-const kittenTwo = `<li class="card">
-<article>
+const kittenTwo = `<li class="card" >
+<article class = "js-kit2" >
   <img
     class="card_img"
     src= ${kittenImage_2}
@@ -71,8 +80,8 @@ const kittenTwo = `<li class="card">
 </li>`;
 
 
-const kittenThree = `<li class="card">
-<article>
+const kittenThree = `<li class="card" >
+<article class = "js-kit3">
   <img
     class="card_img"
     src= ${kittenImage_3}
@@ -85,30 +94,52 @@ const kittenThree = `<li class="card">
 </li>`;
 
 
-
-
-
-
-
-if( kittenDesc_1.includes(descrSearchText) ) {
-  catList.innerHTML = kittenOne}
-
-if( kittenDesc_2.includes(descrSearchText) ) {
-  catList.innerHTML = kittenTwo;
-}
-
-if( kittenDesc_3.includes(descrSearchText) ) {
-  catList.innerHTML = kittenThree;
-}
-
-
-
-
-
-
-
 //Crear items dentro de la variable catList
-//catList.innerHTML = kittenOne + kittenTwo + kittenThree;
+
+catList.innerHTML = kittenOne + kittenTwo + kittenThree;
+
+let kittenItem1 = document.querySelector('.js-kit1');
+let kittenItem2 = document.querySelector('.js-kit2');
+let kittenItem3 = document.querySelector('.js-kit3');
+
+
+console.log(kittenItem1);
+console.log(kittenItem2);
+console.log(kittenItem3);
+
+//console.log(kit1value);
+
+
+if (kittenDesc_1.includes(descrSearchText)) {
+
+  kittenItem2.classList.add("hidden");
+  kittenItem3.classList.add("hidden");
+
+}
+
+if (kittenDesc_2.includes(descrSearchText)) {
+
+  kittenItem1.classList.add("hidden");
+  kittenItem3.classList.add("hidden");
+
+}
+
+if (kittenDesc_3.includes(descrSearchText)) {
+
+  kittenItem3.classList.remove("hidden");
+  kittenItem1.classList.add("hidden");
+  kittenItem2.classList.add("hidden");
+
+
+}
+
+
+
+
+
+
+
+
 
 
 
