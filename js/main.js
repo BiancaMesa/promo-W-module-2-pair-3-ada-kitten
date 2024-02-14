@@ -159,13 +159,21 @@ btnAdd.addEventListener('click', (event) => {
   }
 
 });
-btnCancel.addEventListener('input', (event) => {
+/*btnCancel.addEventListener('input', (event) => {
 
   event.preventDefault();
   formSection.reset();
 
-});
 
+
+
+});*/
+btnCancel.addEventListener('click', (event) => {
+
+  event.preventDefault();
+  formSection.classList.add("collapsed");
+
+});
 
 
 
