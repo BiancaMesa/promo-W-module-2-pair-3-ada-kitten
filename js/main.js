@@ -159,13 +159,14 @@ btnAdd.addEventListener('click', (event) => {
   }
 
 });
-/*btnCancel.addEventListener('click', (event) => {
+btnCancel.addEventListener('input', (event) => {
 
   event.preventDefault();
   formSection.reset();
 
+});
 
-});*/
+
 
 
 
