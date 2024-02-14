@@ -159,15 +159,10 @@ btnAdd.addEventListener('click', (event) => {
   }
 
 });
-/*btnCancel.addEventListener('input', (event) => {
 
-  event.preventDefault();
-  formSection.reset();
+//habia que cerrar el menu no decirle que se borre jeje
 
 
-
-
-});*/
 btnCancel.addEventListener('click', (event) => {
 
   event.preventDefault();
