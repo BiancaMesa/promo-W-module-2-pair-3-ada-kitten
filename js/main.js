@@ -9,8 +9,6 @@ const descrSearchText = inputSearchDesc.value;
 const messageFound = document.querySelector('.js-message');
 
 
-
-
 const kittenImage_1 = "https://dev.adalab.es/gato-siames.webp";
 const kittenName_1 = "Anastacio";
 const kittenDesc_1 = `Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos
@@ -31,12 +29,6 @@ const kittenDesc_3 = `Tienen la cabeza cuadrada y los ojos simétricos, por lo q
 Sus ojos son grandes y las orejas resultan largas y en punta.`;
 const kittenBreed_3 = "Maine Coon";
 
-
-
-
-
-
-
 let html = '';
 
 //html lo estamos convirtiendo en KittenBreed_1
@@ -46,12 +38,10 @@ if (kittenBreed_1 === "") {
   html = kittenBreed_1;
 }
 
-
-
 //Constante 1 creada en JS directamente
 
-const kittenOne = `<li class="card" >
-<article class="js-kit1">
+const kittenOne = `<li class="card js-kit1" >
+<article>
   <img
     class="card_img"
     src= ${kittenImage_1}
@@ -64,10 +54,8 @@ const kittenOne = `<li class="card" >
 </li>`;
 
 
-
-
-const kittenTwo = `<li class="card" >
-<article class = "js-kit2" >
+const kittenTwo = `<li class="card  js-kit2" >
+<article>
   <img
     class="card_img"
     src= ${kittenImage_2}
@@ -80,8 +68,8 @@ const kittenTwo = `<li class="card" >
 </li>`;
 
 
-const kittenThree = `<li class="card" >
-<article class = "js-kit3">
+const kittenThree = `<li class="card js-kit3" >
+<article>
   <img
     class="card_img"
     src= ${kittenImage_3}
@@ -98,23 +86,30 @@ const kittenThree = `<li class="card" >
 
 catList.innerHTML = kittenOne + kittenTwo + kittenThree;
 
-let kittenItem1 = document.querySelector('.js-kit1');
-let kittenItem2 = document.querySelector('.js-kit2');
-let kittenItem3 = document.querySelector('.js-kit3');
+//crear nuevas variables que obtengan el section ya impreso
+
+const kittenItem1 = document.querySelector('.js-kit1');
+const kittenItem2 = document.querySelector('.js-kit2');
+const kittenItem3 = document.querySelector('.js-kit3');
 
 
+//console.log(kittenItem1);
+//console.log(kittenItem2);
+//console.log(kittenItem3);
+console.log(descrSearchText);
 console.log(kittenItem1);
-console.log(kittenItem2);
-console.log(kittenItem3);
 
 //console.log(kit1value);
 
+if (descrSearchText == "") {
+
+  catList.innerHTML = kittenOne + kittenTwo + kittenThree;
+}
 
 if (kittenDesc_1.includes(descrSearchText)) {
 
   kittenItem2.classList.add("hidden");
   kittenItem3.classList.add("hidden");
-
 }
 
 if (kittenDesc_2.includes(descrSearchText)) {
@@ -130,9 +125,47 @@ if (kittenDesc_3.includes(descrSearchText)) {
   kittenItem1.classList.add("hidden");
   kittenItem2.classList.add("hidden");
 
-
 }
 
+const formSection = document.querySelector('.js-new-form');
+const inputDesc = document.querySelector('.js-input-desc');
+const inputPhoto = document.querySelector('.js-input-photo');
+const inputName = document.querySelector('.js-input-name');
+const inputBreed = document.querySelector('.js-input-breed');
+const labelMessageError = document.querySelector('.js-label-error');
+
+const btnAdd = document.querySelector('.js-buttAdd');
+const btnCancel = document.querySelector('.js-buttCancel');
+
+
+console.log(btnCancel);
+
+
+btnAdd.addEventListener('click', (event) => {
+
+  event.preventDefault();
+  const valueDesc = inputDesc.value;
+  const valuePhoto = inputPhoto.value;
+  const valueName = inputName.value;
+  const valueBreed = inputBreed.value;
+
+  if (valueDesc === '' || valuePhoto === '' || valueName === '' || valueBreed === '') {
+
+    labelMessageError.innerHTML = "Uy! parece que has olvidado algo"
+
+  } else {
+
+    labelMessageError.innerHTML = "Correcto"
+  }
+
+});
+/*btnCancel.addEventListener('click', (event) => {
+
+  event.preventDefault();
+  formSection.reset();
+
+
+});*/
 
 
 
