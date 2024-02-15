@@ -136,9 +136,40 @@ const labelMessageError = document.querySelector('.js-label-error');
 
 const btnAdd = document.querySelector('.js-buttAdd');
 const btnCancel = document.querySelector('.js-buttCancel');
+const formButton = document.querySelector('.js-form-button');
+
 
 
 console.log(btnCancel);
+
+
+
+function showNewCatForm() {
+  formSection.classList.remove('collapsed');
+  console.log('entra');
+}
+
+function hideNewCatForm() {
+  formSection.classList.add('collapsed');
+  console.log('sale');
+}
+
+
+function handleClickNewCatForm(event) {
+  event.preventDefault();
+  if (formSection.classList.contains('collapsed')) {
+    showNewCatForm();
+  } else {
+    hideNewCatForm();
+  }
+}
+
+
+formButton.addEventListener('click',handleClickNewCatForm);
+
+
+
+
 
 
 btnAdd.addEventListener('click', (event) => {
@@ -169,8 +200,6 @@ btnCancel.addEventListener('click', (event) => {
   formSection.classList.add("collapsed");
 
 });
-
-
 
 
 
