@@ -7,6 +7,7 @@ const catList = document.querySelector('.js-list');
 const inputSearchDesc = document.querySelector('.js_in_search_desc');
 const descrSearchText = inputSearchDesc.value;
 const messageFound = document.querySelector('.js-message');
+const searchButton = document.querySelector('.js-search-button');
 
 
 const kittenImage_1 = "https://dev.adalab.es/gato-siames.webp";
@@ -93,39 +94,36 @@ const kittenItem2 = document.querySelector('.js-kit2');
 const kittenItem3 = document.querySelector('.js-kit3');
 
 
-//console.log(kittenItem1);
-//console.log(kittenItem2);
-//console.log(kittenItem3);
-console.log(descrSearchText);
-console.log(kittenItem1);
 
-//console.log(kit1value);
+//Función manejadora
+const handleFilterKitten = (event) => {
+  event.preventDefault();
 
-if (descrSearchText == "") {
+  catList.innerHTML = '';
+  
 
-  catList.innerHTML = kittenOne + kittenTwo + kittenThree;
+  if (kittenDesc_1.includes(inputSearchDesc.value)) {
+    
+    catList.innerHTML += kittenOne;
+  }
+  
+  if (kittenDesc_2.includes(inputSearchDesc.value)) {
+  
+    catList.innerHTML += kittenTwo;
+  }
+  
+  if (kittenDesc_3.includes(inputSearchDesc.value)) {
+  
+    catList.innerHTML += kittenThree;
+  }
 }
 
-if (kittenDesc_1.includes(descrSearchText)) {
 
-  kittenItem2.classList.add("hidden");
-  kittenItem3.classList.add("hidden");
-}
+// Event hacer click en buscar
+searchButton.addEventListener('click', handleFilterKitten);
 
-if (kittenDesc_2.includes(descrSearchText)) {
+console.log(descrSearchText.value);
 
-  kittenItem1.classList.add("hidden");
-  kittenItem3.classList.add("hidden");
-
-}
-
-if (kittenDesc_3.includes(descrSearchText)) {
-
-  kittenItem3.classList.remove("hidden");
-  kittenItem1.classList.add("hidden");
-  kittenItem2.classList.add("hidden");
-
-}
 
 const formSection = document.querySelector('.js-new-form');
 const inputDesc = document.querySelector('.js-input-desc');
