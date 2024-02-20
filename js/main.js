@@ -9,46 +9,46 @@ const descrSearchText = inputSearchDesc.value;
 const messageFound = document.querySelector('.js-message');
 const searchButton = document.querySelector('.js-search-button');
 
-const objKittenOne = {
-  image: "https://dev.adalab.es/gato-siames.webp",
-  name: "Anastacio",
-  desc: `Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos
-  hace 500 años, donde tuvo su origen muy posiblemente.`,
-  breed: "",
-}
-const objKittenTwo = {
-  image: "https://dev.adalab.es/sphynx-gato.webp",
-  name: "Fiona",
-  desc: ` Produce fascinación y curiosidad. Exótico, raro, bello, extraño…
-hasta con pinta de alienígena han llegado a definir a esta raza
-gatuna que se caracteriza por la «ausencia» de pelo.`,
-  breed: "Sphynx",
-}
-
-const objKittenThree = {
-  image: "https://dev.adalab.es/maine-coon-cat.webp",
-  name: "Cielo",
-  desc: `Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad.
-  Sus ojos son grandes y las orejas resultan largas y en punta.`,
-  breed: "Maine Coon",
-}
 
 
 let html = '';
 
-//html lo estamos convirtiendo en KittenBreed_1
-if (objKittenOne.breed === "") {
-  html = 'Uy que despiste, no sabemos su raza';
-} else {
-  html = objKittenOne.breed;
-}
+const kittenDataList = [
+
+  {
+    image: "https://dev.adalab.es/gato-siames.webp",
+    name: "Anastacio",
+    desc: `Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos
+    hace 500 años, donde tuvo su origen muy posiblemente.`,
+    breed: `${html}`,
+  }, 
+    
+  {
+    image: "https://dev.adalab.es/sphynx-gato.webp",
+    name: "Fiona",
+    desc: ` Produce fascinación y curiosidad. Exótico, raro, bello, extraño…
+  hasta con pinta de alienígena han llegado a definir a esta raza
+  gatuna que se caracteriza por la «ausencia» de pelo.`,
+    breed: "Sphynx",
+  },
+  
+  {
+    image: "https://dev.adalab.es/maine-coon-cat.webp",
+    name: "Cielo",
+    desc: `Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad.
+    Sus ojos son grandes y las orejas resultan largas y en punta.`,
+    breed: "Maine Coon",
+  }
+]
+
+
 
 
 //Crear items dentro de la variable catList
 
-catList.innerHTML = renderKitten(objKittenOne) + renderKitten(objKittenTwo) + renderKitten(objKittenThree);
+catList.innerHTML = renderKitten(kittenDataList[0]) + renderKitten(kittenDataList[1]) + renderKitten(kittenDataList[2]);
 
-console.log();
+
 
 //crear nuevas variables que obtengan el section ya impreso
 
@@ -58,26 +58,26 @@ const kittenItem3 = document.querySelector('.js-kit3');
 
 
 
-//Función manejadora
+//Función manejadora para filtrar gatitos
 const handleFilterKitten = (event) => {
   event.preventDefault();
 
   catList.innerHTML = '';
 
 
-  if (kittenDesc_1.includes(inputSearchDesc.value)) {
+  if (kittenDataList[0].desc.includes(inputSearchDesc.value)) {
 
-    catList.innerHTML += kittenOne;
+    catList.innerHTML += renderKitten(kittenDataList[0]);
   }
 
-  if (kittenDesc_2.includes(inputSearchDesc.value)) {
+  if (kittenDataList[1].desc.includes(inputSearchDesc.value)) {
 
-    catList.innerHTML += kittenTwo;
+    catList.innerHTML += renderKitten(kittenDataList[1]);
   }
 
-  if (kittenDesc_3.includes(inputSearchDesc.value)) {
+  if (kittenDataList[2].desc.includes(inputSearchDesc.value)) {
 
-    catList.innerHTML += kittenThree;
+    catList.innerHTML += renderKitten(kittenDataList[2]);
   }
 }
 
@@ -88,7 +88,6 @@ searchButton.addEventListener('click', handleFilterKitten);
 console.log(descrSearchText.value);
 
 //DOM Formulario de añadir gatos
-
 const formSection = document.querySelector('.js-new-form');
 const inputDesc = document.querySelector('.js-input-desc');
 const inputPhoto = document.querySelector('.js-input-photo');
@@ -152,11 +151,17 @@ function addNewKitten() {
     //aquí se creara el gato
     labelMessageError.innerHTML = "Correcto"
   }
-
-
-
 }
+
+
+//Función que imprime el gato con los datos que le has dado en el array
 function renderKitten(numberCat) {
+
+  if (kittenDataList[0].breed === "") {
+    html = 'Uy que despiste, no sabemos su raza';
+  } else {
+   html = kittenDataList[0].breed;
+  }
 
   const rendKitten = `<li class="card js-kit3" >
   <article>
@@ -173,6 +178,8 @@ function renderKitten(numberCat) {
 
   return rendKitten;
 }
+
+
 
 
 
