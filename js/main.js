@@ -11,7 +11,7 @@ const searchButton = document.querySelector('.js-search-button');
 
 
 
-let html = '';
+let html = ""
 
 const kittenDataList = [
 
@@ -20,9 +20,9 @@ const kittenDataList = [
     name: "Anastacio",
     desc: `Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos
     hace 500 años, donde tuvo su origen muy posiblemente.`,
-    breed: `${html}`,
-  }, 
-    
+    breed: ` `,
+  },
+
   {
     image: "https://dev.adalab.es/sphynx-gato.webp",
     name: "Fiona",
@@ -31,7 +31,7 @@ const kittenDataList = [
   gatuna que se caracteriza por la «ausencia» de pelo.`,
     breed: "Sphynx",
   },
-  
+
   {
     image: "https://dev.adalab.es/maine-coon-cat.webp",
     name: "Cielo",
@@ -157,10 +157,12 @@ function addNewKitten() {
 //Función que imprime el gato con los datos que le has dado en el array
 function renderKitten(numberCat) {
 
-  if (kittenDataList[0].breed === "") {
+
+  if (numberCat.breed === " ") {
+
     html = 'Uy que despiste, no sabemos su raza';
   } else {
-   html = kittenDataList[0].breed;
+    html = numberCat.breed;
   }
 
   const rendKitten = `<li class="card js-kit3" >
@@ -171,13 +173,19 @@ function renderKitten(numberCat) {
       alt="siames-cat"
     />
     <h3 class="card_title">${numberCat.name}</h3>
-    <h4 class="card_race">${numberCat.breed}</h4>
+    <h4 class="card_race">${html}</h4>
     <p class="card_description">${numberCat.desc}</p>
   </article>
   </li>`;
 
   return rendKitten;
+
 }
+
+
+
+
+
 
 
 
