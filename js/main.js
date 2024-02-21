@@ -20,16 +20,16 @@ const kittenDataList = [
     name: "Anastacio",
     desc: `Porte elegante, su patrón de color tan característico y sus ojos de un azul intenso, pero su historia se remonta a Asía al menos
     hace 500 años, donde tuvo su origen muy posiblemente.`,
-    breed: ` `,
+    breed: `Siamés `
   },
 
   {
     image: "https://dev.adalab.es/sphynx-gato.webp",
     name: "Fiona",
     desc: ` Produce fascinación y curiosidad. Exótico, raro, bello, extraño…
-  hasta con pinta de alienígena han llegado a definir a esta raza
-  gatuna que se caracteriza por la «ausencia» de pelo.`,
-    breed: "Sphynx",
+    hasta con pinta de alienígena han llegado a definir a esta raza
+    gatuna que se caracteriza por la «ausencia» de pelo.`,
+    breed: " "
   },
 
   {
@@ -37,16 +37,24 @@ const kittenDataList = [
     name: "Cielo",
     desc: `Tienen la cabeza cuadrada y los ojos simétricos, por lo que su bella mirada se ha convertido en una de sus señas de identidad.
     Sus ojos son grandes y las orejas resultan largas y en punta.`,
-    breed: "Maine Coon",
+    breed: " "
   }
 ]
 
 
-
-
 //Crear items dentro de la variable catList
+function renderKittenList(kittenDataList) {
 
-catList.innerHTML = renderKitten(kittenDataList[0]) + renderKitten(kittenDataList[1]) + renderKitten(kittenDataList[2]);
+  //Vaciamos el innerHTML del <ul> de la página.
+  catList.innerHTML = '';
+  //Iteramos sobre el listado de gatitos
+  for (const kitten of kittenDataList) {
+    catList.innerHTML += renderKitten(kitten);
+  }
+}
+
+renderKittenList(kittenDataList);
+/*catList.innerHTML = renderKitten(kittenDataList[0]) + renderKitten(kittenDataList[1]) + renderKitten(kittenDataList[2]);*/
 
 
 
@@ -60,12 +68,27 @@ const kittenItem3 = document.querySelector('.js-kit3');
 
 //Función manejadora para filtrar gatitos
 const handleFilterKitten = (event) => {
+
   event.preventDefault();
+
+  const descrSearchText = inputSearchDesc.value;
 
   catList.innerHTML = '';
 
 
-  if (kittenDataList[0].desc.includes(inputSearchDesc.value)) {
+  for (const kitten of kittenDataList) {
+
+    //Comprueba si cada gatito contiene la descripción
+    //Si la contiene pintamos un gatito
+    //utilizando la función renderKitten(kittenItem)
+    if (kitten.desc.includes(descrSearchText)) {
+      catList.innerHTML += renderKitten(kitten);
+    }
+
+  }
+
+
+  /*if (kittenDataList[0].desc.includes(inputSearchDesc.value)) {
 
     catList.innerHTML += renderKitten(kittenDataList[0]);
   }
@@ -78,7 +101,12 @@ const handleFilterKitten = (event) => {
   if (kittenDataList[2].desc.includes(inputSearchDesc.value)) {
 
     catList.innerHTML += renderKitten(kittenDataList[2]);
-  }
+  }*/
+
+
+
+
+
 }
 
 
@@ -181,14 +209,6 @@ function renderKitten(numberCat) {
   return rendKitten;
 
 }
-
-
-
-
-
-
-
-
 
 
 
